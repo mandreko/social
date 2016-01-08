@@ -15,6 +15,8 @@ module Octopress
         'tweet_link_title'    => "Share on Twitter",
         'profile_link_text'   => "Follow :username",
         'profile_link_title'  => "Follow :username on Twitter",
+        'timeline_link_text'  => "Tweets by :username",
+        'timeline_link_title' => "Tweets by :username",
       }
 
       def set_config(site)
@@ -33,6 +35,14 @@ module Octopress
           class="twitter-share-link"
           href="https://twitter.com/intent/tweet?&text=#{ERB::Util.url_encode(message(site, item)).strip}"
           title="#{config['tweet_link_title']}">#{config['tweet_link_text']}</a>}
+      end
+
+      def timeline_tag(*args)
+        %Q{<a
+          class="twitter-timeline"
+          href="https://twitter.com/#{username.sub('@', '')}"
+          data-widget-id="#{config['timeline_widget_id']}"
+          title="#{config['timeline_link_title']}">#{config['timeline_link_text']}</a>}
       end
 
       def tweet_button(site, item)
