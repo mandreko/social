@@ -37,7 +37,7 @@ module Octopress
           title="#{config['tweet_link_title']}">#{config['tweet_link_text']}</a>}
       end
 
-      def timeline_tag(*args)
+      def twitter_timeline_tag(*args)
         %Q{<a
           class="twitter-timeline"
           href="https://twitter.com/#{username.sub('@', '')}"
